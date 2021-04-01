@@ -23,7 +23,7 @@
     </label>
     <ul class="todo-list">
       <li
-        *ngFor="let todoListItem of items"
+        *ngFor="let todoListItem of filterItems()"
       >
         <app-todo-item [item]="todoListItem"></app-todo-item>
       </li>
@@ -33,13 +33,19 @@
     <span class="todo-count"><strong></strong> item left</span>
     <ul class="filters">
       <li>
-        <a class="filterAll">All</a>
+        <a class="filterAll" [ngClass]="{ selected: filter === 'all' }" (click)="filter = 'all'">
+          All
+        </a>
       </li>
       <li>
-        <a class="filterActives">Active</a>
+        <a class="filterActive" [ngClass]="{ selected: filter === 'active' }" (click)="filter = 'active'">
+          Active
+        </a>
       </li>
       <li>
-        <a class="filterCompleted">Completed</a>
+        <a class="filterCompleted" [ngClass]="{ selected: filter === 'done' }" (click)="filter = 'done'">
+          Completed
+        </a>
       </li>
     </ul>
     <button class="clear-completed" (click)="deleteAllItemsChecked()">completed</button>
