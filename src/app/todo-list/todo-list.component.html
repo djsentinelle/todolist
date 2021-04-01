@@ -19,6 +19,8 @@
       <input  class="toggle-all"
               type="checkbox"
               name="toggleAll"
+              (click)="toggleAllItems()"
+              [checked]="allCompleted()"
       />
     </label>
     <ul class="todo-list">
@@ -57,4 +59,3 @@
     <span class="clear-completed-text"> Clear : &nbsp;</span>
   </footer>
 </section>
-<hr/>

@@ -87,4 +87,24 @@ export class TodoListComponent implements OnInit {
   numberOfItemsLeft(): number {
     return this.todoList.items.length - this.todoList.items.filter(item => item.isDone).length;
   }
+
+  // Checks or unchecks all items
+  toggleAllItems(): void {
+    this.allCompleted() ?
+      this.todoList.items.forEach(item => {
+        this.todoService.setItemsDone(false, item);
+      })
+      :
+      this.todoList.items.forEach(item => {
+        this.todoService.setItemsDone(true, item);
+      });
+  }
+
+  // Checks if all items are checked
+  allCompleted(): boolean {
+    return (
+      this.todoList.items.length ===
+      this.todoList.items.filter(item => item.isDone).length
+    );
+  }
 }
