@@ -13,50 +13,98 @@ import { TodoService } from '../todo.service';
 
 export class TodoListComponent implements OnInit {
 
-    @Input() newTodoInputValue: string;
+  @Input() newTodoInputValue: string;
 
-    public todoList: TodoListData;
-    public todoListItem: TodoItemData;
+  public todoList: TodoListData;
+  public todoListItem: TodoItemData;
 
-    constructor(private todoService: TodoService) {
-      // We retrieve our observable service and subscribe to it. Each time a change occurs, data is updated as well
-      todoService.getTodoListDataObservable().subscribe(tdl => this.todoList = tdl);
+  public filter: string;
+
+
+  constructor(private todoService: TodoService) {
+    // We retrieve our observable service and subscribe to it. Each time a change occurs, data is updated as well
+    todoService.getTodoListDataObservable().subscribe(tdl => this.todoList = tdl);
+  }
+
+  ngOnInit() {
+    this.filter = 'all';
+  }
+
+  // Getters
+  get title(): string {
+    return this.todoList ? this.todoList.title : '';
+  }
+
+  get items(): TodoItemData[] {
+    return this.todoList ? this.todoList.items : [];
+  }
+
+  // Methods
+
+  // Adds an item to our list
+  addItem(): void {
+    // We create an item with the input value and set isDone to false by default
+    this.todoListItem = {
+      label: this.newTodoInputValue,
+      isDone: false
+    };
+
+    // We add the current item to the list if it's not empty
+    if (this.todoListItem.label !== '') {
+      this.todoService.appendItems(this.todoListItem);
     }
 
-    ngOnInit() {}
+    // We reset our todoListItem attribute when the work is done
+    this.newTodoInputValue = '';
+  }
 
-    // Getters
-    get title(): string {
-      return this.todoList ? this.todoList.title : '';
-    }
+  // Deletes all items
+  deleteAllItems(): void {
+    this.todoList.items.forEach(item => {
+      this.todoService.removeItems(item);
+    });
+  }
 
-    get items(): TodoItemData[] {
-      return this.todoList ? this.todoList.items : [];
-    }
-
-    // Methods
-
-    // Add an item to our list
-    addItem(): void {
-      // We create an item with the input value and set isDone to false by default
-      this.todoListItem = {
-        label: this.newTodoInputValue,
-        isDone: false
-      };
-
-      // We add the current item to the list if it's not empty
-      if (this.todoListItem.label !== '') {
-        this.todoService.appendItems(this.todoListItem);
-      }
-
-      // We reset our todoListItem attribute when the work is done
-      this.newTodoInputValue = '';
-    }
-
-    // Delete all items
-    deleteAllItems(): void {
-      this.todoList.items.forEach(item => {
+  // Deletes all checked items
+  deleteAllItemsChecked(): void {
+    this.todoList.items.forEach(item => {
+      if (item.isDone) {
         this.todoService.removeItems(item);
-      });
+      }
+    });
+  }
+
+  // Returns items depending on the filter attribute status
+  filterItems(): TodoItemData[] {
+    switch (this.filter) {
+      case 'all' : return this.todoList.items;
+      case 'active' : return this.todoList.items.filter(item => !item.isDone);
+      case 'done' : return this.todoList.items.filter(item => item.isDone);
     }
+  }
+
+  // Returns the number of items that still active
+  numberOfItemsLeft(): number {
+    return this.todoList.items.length - this.todoList.items.filter(item => item.isDone).length;
+  }
+
+  // Checks or unchecks all items
+  toggleAllItems(): void {
+    this.allCompleted() ?
+      this.todoList.items.forEach(item => {
+        this.todoService.setItemsDone(false, item);
+      })
+      :
+      this.todoList.items.forEach(item => {
+        this.todoService.setItemsDone(true, item);
+      });
+  }
+
+  // Checks if all items are checked
+  allCompleted(): boolean {
+    return (
+      this.todoList.items.length ===
+      this.todoList.items.filter(item => item.isDone).length
+    );
+  }
 }

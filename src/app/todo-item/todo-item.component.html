@@ -3,9 +3,11 @@
     <input 	class			= "toggle"
             type			= "checkbox"
             name			= "done"
+            [(ngModel)]="isDone"
+            (ngModelChange)="isDone = $event"
     />
   </label>
-  <label class="text">
+  <label class="texte">
     {{ item.label }}
   </label>
   <button class="destroy" (click)="deleteItem()"></button>
