@@ -75,11 +75,16 @@ export class TodoListComponent implements OnInit {
   }
 
   // Returns items depending on the filter attribute status
-  filterItems() {
+  filterItems(): TodoItemData[] {
     switch (this.filter) {
       case 'all' : return this.todoList.items;
       case 'active' : return this.todoList.items.filter(item => !item.isDone);
       case 'done' : return this.todoList.items.filter(item => item.isDone);
     }
+  }
+
+  // Returns the number of items that still active
+  numberOfItemsLeft(): number {
+    return this.todoList.items.length - this.todoList.items.filter(item => item.isDone).length;
   }
 }

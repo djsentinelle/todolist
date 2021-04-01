@@ -30,7 +30,10 @@
     </ul>
   </section>
   <footer class="footer">
-    <span class="todo-count"><strong></strong> item left</span>
+    <span class="todo-count">
+      <strong>{{ numberOfItemsLeft() }}</strong>
+      {{ numberOfItemsLeft() > 1 ? "items" : "item" }} left
+    </span>
     <ul class="filters">
       <li>
         <a class="filterAll" [ngClass]="{ selected: filter === 'all' }" (click)="filter = 'all'">
