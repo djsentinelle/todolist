@@ -1,4 +1,4 @@
-import {TodoItemData} from './TodoItemData';
+import { TodoItemData } from './TodoItemData';
 
 export interface TodoListData {
   title: string;

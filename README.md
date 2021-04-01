@@ -40,4 +40,5 @@ TODO
 ## Development diary
 
 - Commit "zero" : Fixed some tslint issues. Migration to a 100% English application. README started.
-- Commit "Add" : We can now add an item to our list if it's not empty.
+- Branch "Add" : We can now add an item to our list if it's not empty.
+    - Some read about this warning `Private field todoList cannot be resolved when using the AOT compiler.`. Made a public access when necessary so AOT compilers should work as well.

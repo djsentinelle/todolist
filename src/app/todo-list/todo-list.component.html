@@ -2,20 +2,31 @@
   <header class="header">
     <h1>{{ title }}</h1>
     <form>
-      <input  #newTodoInput
-              name        = "newTodoInput"
-              class       = "new-todo"
-              placeholder = "Well well well... what's next ?"
-              autofocus
-      />
+      <label>
+        <input  #newTodoInput
+                name        = "newTodoInput"
+                class       = "new-todo"
+                placeholder = "Well well well... what's next ?"
+                autofocus
+                (keyup.enter)="addItem()"
+                [(ngModel)]="newTodoInputValue"
+        />
+      </label>
     </form>
   </header>
-  <section class="main">
-    <input  class="toggle-all"
-            type="checkbox"
-            name="toggleAll"
-    />
+  <section class="main" *ngIf="items.length > 0">
+    <label>
+      <input  class="toggle-all"
+              type="checkbox"
+              name="toggleAll"
+      />
+    </label>
     <ul class="todo-list">
+      <li
+        *ngFor="let todoListItem of items"
+      >
+        <app-todo-item [item]="todoListItem"></app-todo-item>
+      </li>
     </ul>
   </section>
   <footer class="footer">

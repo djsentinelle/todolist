@@ -1,14 +1,20 @@
 <div class="view">
-  <input 	class			= "toggle"
-          type			= "checkbox"
-          name			= "done"
-  />
-  <label 	class="text"></label>
+  <label>
+    <input 	class			= "toggle"
+            type			= "checkbox"
+            name			= "done"
+    />
+  </label>
+  <label class="text">
+    {{ item.label }}
+  </label>
   <button class="destroy"></button>
 </div>
 <form>
-  <input  #newTextInput
-          name    = "newTextInput"
-          class   = "edit"
-  />
+  <label>
+    <input  #newTextInput
+            name    = "newTextInput"
+            class   = "edit"
+    />
+  </label>
 </form>
