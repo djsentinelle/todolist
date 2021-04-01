@@ -42,7 +42,10 @@
         <a class="filterCompleted">Completed</a>
       </li>
     </ul>
-    <button class="clear-completed">Clear completed</button>
+    <button class="clear-completed">completed</button>
+    <span class="clear-completed-text">&nbsp;|&nbsp;</span>
+    <button class="clear-completed" (click)="deleteAllItems()">all</button>
+    <span class="clear-completed-text"> Clear : &nbsp;</span>
   </footer>
 </section>
 <hr/>

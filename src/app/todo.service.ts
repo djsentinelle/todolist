@@ -11,8 +11,7 @@ export class TodoService {
     items: []
   });
 
-  constructor() {
-  }
+  constructor() {}
 
   // We declare an observable TodoListData with a name and items
   getTodoListDataObservable(): Observable<TodoListData> {

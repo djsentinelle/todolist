@@ -16,9 +16,7 @@ export class TodoItemComponent implements OnInit {
 
   @ViewChild('newTextInput', { static: false }) private inputLabel: ElementRef;
 
-  private todoService: TodoService;
-
-  constructor() {}
+  constructor(private todoService: TodoService) {}
 
   ngOnInit() {}
 
@@ -31,4 +29,13 @@ export class TodoItemComponent implements OnInit {
   set label(lab: string) {
     this.todoService.setItemsLabel(lab, this.item);
   }
+
+  // Methods
+
+  // Delete the current item
+  deleteItem(): void {
+    console.log(this.item);
+    this.todoService.removeItems(this.item);
+  }
+
 }

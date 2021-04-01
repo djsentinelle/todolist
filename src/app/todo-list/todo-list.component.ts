@@ -10,6 +10,7 @@ import { TodoService } from '../todo.service';
     styleUrls: ['./todo-list.component.css'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
+
 export class TodoListComponent implements OnInit {
 
     @Input() newTodoInputValue: string;
@@ -50,5 +51,12 @@ export class TodoListComponent implements OnInit {
 
       // We reset our todoListItem attribute when the work is done
       this.newTodoInputValue = '';
+    }
+
+    // Delete all items
+    deleteAllItems(): void {
+      this.todoList.items.forEach(item => {
+        this.todoService.removeItems(item);
+      });
     }
 }
