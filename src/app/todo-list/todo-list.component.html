@@ -1,12 +1,13 @@
 <section class="todoapp">
   <header class="header">
-    <h1>{{label}}</h1>
+    <h1>{{ title }}</h1>
     <form>
       <input  #newTodoInput
               name        = "newTodoInput"
               class       = "new-todo"
-              placeholder = "Que faire?"
-              autofocus />
+              placeholder = "Well well well... what's next ?"
+              autofocus
+      />
     </form>
   </header>
   <section class="main">
@@ -18,19 +19,19 @@
     </ul>
   </section>
   <footer class="footer">
-    <span class="todo-count"><strong></strong> restantes</span>
+    <span class="todo-count"><strong></strong> item left</span>
     <ul class="filters">
       <li>
-        <a class="filterAll">Tous</a>
+        <a class="filterAll">All</a>
       </li>
       <li>
-        <a class="filterActives">Actifs</a>
+        <a class="filterActives">Active</a>
       </li>
       <li>
-        <a class="filterCompleted">Complétés</a>
+        <a class="filterCompleted">Completed</a>
       </li>
     </ul>
-    <button class="clear-completed">Supprimer cochées</button>
+    <button class="clear-completed">Clear completed</button>
   </footer>
 </section>
 <hr/>

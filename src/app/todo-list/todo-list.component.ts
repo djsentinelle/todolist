@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {TodoListData} from '../dataTypes/TodoListData';
-import {TodoItemData} from '../dataTypes/TodoItemData';
-import {TodoService} from '../todo.service';
+import { Component, OnInit } from '@angular/core';
+import { TodoListData } from '../dataTypes/TodoListData';
+import { TodoItemData } from '../dataTypes/TodoItemData';
+import { TodoService } from '../todo.service';
 
 @Component({
     selector: 'app-todo-list',
@@ -10,19 +10,18 @@ import {TodoService} from '../todo.service';
 })
 export class TodoListComponent implements OnInit {
 
-    private todoList: TodoListData; 
-    
+    private todoList: TodoListData;
+
     constructor(private todoService: TodoService) {
-        todoService.getTodoListDataObservable().subscribe( tdl => this.todoList = tdl );
+        todoService.getTodoListDataObservable().subscribe(tdl => this.todoList = tdl);
     }
 
-    ngOnInit() {
+    ngOnInit() {}
+
+    get title(): string {
+        return this.todoList.title;
     }
-    
-    get label(): string {
-        return this.todoList.label;
-    }
-    
+
     get items(): TodoItemData[] {
         return this.todoList.items;
     }

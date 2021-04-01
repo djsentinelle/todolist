@@ -1,25 +1,43 @@
-# PWA-TP3
+# M2 MIASHS-DCISS : TODOList Project
 
-## Development server
+## Install :
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Clone this repository and install dependencies :
 
-## Code scaffolding
+```
+ git clone https://github.com/moisave/todolist.git
+ cd todolist
+`npm install`
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Run server
 
-## Build
+Run `ng serve` to launch the server. Then navigate to `http://localhost:4200/`. 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+---
 
-## Running unit tests
+## Features :
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+This TODOList includes all functionalities provide by "TodoMVC".
+(See : https://todomvc.com/examples/vanillajs/#/)
 
-## Running end-to-end tests
+Some basic and essential features added : 
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+- Clear all
+- Select all
+- Undo & Redo
 
-## Further help
+More advanced features :
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+### First
+
+TODO
+
+### Second
+
+TODO
+
+## Development diary
+
+- Commit "zero" : Fixed some tslint issues. Migration to a 100% English application. README started.
+- Commit "Add" : We can now add an item to our list if it's not empty.

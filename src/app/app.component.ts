@@ -9,4 +9,5 @@ import {TodoItemData} from './dataTypes/TodoItemData';
   styleUrls: ['./app.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
+
 export class AppComponent {}

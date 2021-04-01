@@ -1,6 +1,6 @@
 import {TodoItemData} from './TodoItemData';
 
 export interface TodoListData {
-  label: string;
+  title: string;
   items: TodoItemData[];
 }
