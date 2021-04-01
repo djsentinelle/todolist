@@ -290,6 +290,7 @@ label[for='toggle-all'] {
 
 .filters li {
   display: inline;
+  cursor: pointer;
 }
 
 .filters li a {
@@ -311,17 +312,18 @@ label[for='toggle-all'] {
 }
 
 .clear-completed,
-html .clear-completed:active {
+html .clear-completed:active,
+.clear-completed-text {
   float: right;
   position: relative;
   line-height: 20px;
   text-decoration: none;
-  cursor: pointer;
-  position: relative;
 }
+
 
 .clear-completed:hover {
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .info {
