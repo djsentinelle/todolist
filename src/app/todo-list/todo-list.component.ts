@@ -59,4 +59,13 @@ export class TodoListComponent implements OnInit {
         this.todoService.removeItems(item);
       });
     }
+
+    // Delete all checked items
+    deleteAllItemsChecked(): void {
+      this.todoList.items.forEach(item => {
+        if (item.isDone) {
+          this.todoService.removeItems(item);
+        }
+      });
+    }
 }

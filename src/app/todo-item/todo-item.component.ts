@@ -30,6 +30,14 @@ export class TodoItemComponent implements OnInit {
     this.todoService.setItemsLabel(lab, this.item);
   }
 
+  get isDone(): boolean {
+    return this.item.isDone;
+  }
+
+  set isDone(done: boolean) {
+    this.todoService.setItemsDone(done, this.item);
+  }
+
   // Methods
 
   // Delete the current item
