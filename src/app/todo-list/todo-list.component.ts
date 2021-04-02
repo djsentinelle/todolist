@@ -79,7 +79,7 @@ export class TodoListComponent implements OnInit {
     switch (this.filter) {
       case 'all' : return this.todoList.items;
       case 'active' : return this.todoList.items.filter(item => !item.isDone);
-      case 'done' : return this.todoList.items.filter(item => item.isDone);
+      case 'completed' : return this.todoList.items.filter(item => item.isDone);
     }
   }
 

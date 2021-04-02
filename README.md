@@ -50,3 +50,7 @@ TODO
     - Items can be filtered by all, active or done. A border appears around the filter when it's activated.
     - The number of left items is displayed. The description changes within the number.
     - Items can all be checked or unchecked in one click.
+- Branch "ui-improvements" : UI bugs fixed. Better feel.
+    - Can't succeed to add a label for each input without breaking hard the display. The warnong `Inputs should have a associated label` is not respected.
+    - I renamed completed to done at the beginning without notifying that it was link to the CSS.
+    - I've modified some padding on checkboxes for a better feeling.

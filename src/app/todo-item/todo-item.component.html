@@ -1,22 +1,18 @@
 <div class="view">
-  <label>
-    <input 	class			= "toggle"
-            type			= "checkbox"
-            name			= "done"
-            [(ngModel)]="isDone"
-            (ngModelChange)="isDone = $event"
-    />
-  </label>
-  <label class="texte">
+  <input 	class			= "toggle"
+          type			= "checkbox"
+          name			= "done"
+          [(ngModel)]="isDone"
+          (ngModelChange)="isDone = $event"
+  />
+  <label class="text">
     {{ item.label }}
   </label>
   <button class="destroy" (click)="deleteItem()"></button>
 </div>
 <form>
-  <label>
-    <input  #newTextInput
-            name    = "newTextInput"
-            class   = "edit"
-    />
-  </label>
+  <input  #newTextInput
+          name    = "newTextInput"
+          class   = "edit"
+  />
 </form>
