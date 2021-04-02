@@ -5,14 +5,16 @@
           [(ngModel)]="isDone"
           (ngModelChange)="isDone = $event"
   />
-  <label class="text">
+  <label class="text" (dblclick)="editionMode = true">
     {{ item.label }}
   </label>
   <button class="destroy" (click)="deleteItem()"></button>
 </div>
-<form>
+<form *ngIf="editionMode" (submit)="label = newTextInput.value">
   <input  #newTextInput
           name    = "newTextInput"
           class   = "edit"
+          [ngModel]="label"
+          (blur)="label = newTextInput.value"
   />
 </form>

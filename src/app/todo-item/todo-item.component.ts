@@ -17,6 +17,8 @@ export class TodoItemComponent implements OnInit {
 
   @ViewChild('newTextInput', { static: false }) private inputLabel: ElementRef;
 
+  private _editionMode = false;
+
   constructor(private todoService: TodoService) {}
 
   ngOnInit() {}
@@ -37,6 +39,14 @@ export class TodoItemComponent implements OnInit {
 
   set isDone(done: boolean) {
     this.todoService.setItemsDone(done, this.item);
+  }
+
+  get editionMode(): boolean {
+    return this._editionMode;
+  }
+
+  set editionMode(value: boolean) {
+    this._editionMode = value;
   }
 
   // Methods
