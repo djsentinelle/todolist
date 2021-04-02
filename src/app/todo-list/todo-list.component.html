@@ -23,8 +23,9 @@
       <li
         *ngFor="let todoListItem of filterItems()"
         [class.completed]="todoListItem.isDone"
+        [class.editing]="itemComponent.editionMode"
       >
-        <app-todo-item [item]="todoListItem"></app-todo-item>
+        <app-todo-item #itemComponent [item]="todoListItem"></app-todo-item>
       </li>
     </ul>
   </section>
