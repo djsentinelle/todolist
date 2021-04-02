@@ -59,3 +59,7 @@ TODO
     - I've modified some padding on checkboxes for a better feeling.
 
 - Branch "edition" : User can now edit his notes by double-click on an item.
+
+- Branch "local-storage" : User session is saved so he can leave the application without losing his data.
+    - localStorage can't be loaded OnInit. We must call `load()` in the constructor.
+
