@@ -2,30 +2,27 @@
   <header class="header">
     <h1>{{ title }}</h1>
     <form>
-      <label>
-        <input  #newTodoInput
-                name        = "newTodoInput"
-                class       = "new-todo"
-                placeholder = "Well well well... what's next ?"
-                autofocus
-                (keyup.enter)="addItem()"
-                [(ngModel)]="newTodoInputValue"
-        />
-      </label>
+      <input  #newTodoInput
+              name        = "newTodoInput"
+              class       = "new-todo"
+              placeholder = "Well well well... what's next ?"
+              autofocus
+              (keyup.enter)="addItem()"
+              [(ngModel)]="newTodoInputValue"
+      />
     </form>
   </header>
   <section class="main" *ngIf="items.length > 0">
-    <label>
-      <input  class="toggle-all"
-              type="checkbox"
-              name="toggleAll"
-              (click)="toggleAllItems()"
-              [checked]="allCompleted()"
-      />
-    </label>
+    <input  class="toggle-all"
+            type="checkbox"
+            name="toggleAll"
+            (click)="toggleAllItems()"
+            [checked]="allCompleted()"
+    />
     <ul class="todo-list">
       <li
         *ngFor="let todoListItem of filterItems()"
+        [class.completed]="todoListItem.isDone"
       >
         <app-todo-item [item]="todoListItem"></app-todo-item>
       </li>
@@ -48,7 +45,7 @@
         </a>
       </li>
       <li>
-        <a class="filterCompleted" [ngClass]="{ selected: filter === 'done' }" (click)="filter = 'done'">
+        <a class="filterCompleted" [ngClass]="{ selected: filter === 'completed' }" (click)="filter = 'completed'">
           Completed
         </a>
       </li>
