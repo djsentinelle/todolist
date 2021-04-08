@@ -8,12 +8,14 @@ import { TodoItemComponent } from './todo-item/todo-item.component';
 import { TodoService } from './todo.service';
 
 import { FormsModule } from '@angular/forms';
+import {CtrlKeysDirective} from './todo-list/todo-list.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     TodoListComponent,
-    TodoItemComponent
+    TodoItemComponent,
+    CtrlKeysDirective
   ],
   imports: [
     BrowserModule, FormsModule

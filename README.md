@@ -23,16 +23,19 @@ This TODOList includes all functionalities provide by "TodoMVC".
 
 Some basic and essential features added : 
 
+- Filters
 - Clear all
+- Local storage
+- Wysiwyg edition mode (What You See Is What You Get)
 - Undo & Redo
 
 More advanced features :
 
-### First
+### Progressive Web Application
 
 TODO
 
-### Second
+### Firebase Authentication
 
 TODO
 
@@ -63,3 +66,4 @@ TODO
 - Branch "local-storage" : User session is saved so he can leave the application without losing his data.
     - localStorage can't be loaded OnInit. We must call `load()` in the constructor.
 
+- Branch "undo-redo" : User can undo his last actions up to 10 times. He can redo it as well.

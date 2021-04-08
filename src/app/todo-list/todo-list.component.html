@@ -1,9 +1,8 @@
-<section class="todoapp">
+<section class="todoapp" appCtrlKeys (ctrlZ)="onCtrlZ()" (shiftCtrlZ)="onShiftCtrlZ()" (ctrlD)="onCtrlD()">
   <header class="header">
     <h1>{{ title }}</h1>
     <form>
-      <input  #newTodoInput
-              name        = "newTodoInput"
+      <input  name        = "newTodoInput"
               class       = "new-todo"
               placeholder = "Well well well... what's next ?"
               autofocus
@@ -57,3 +56,14 @@
     <span class="clear-completed-text"> Clear : &nbsp;</span>
   </footer>
 </section>
+<footer class="info">
+  <p> Double click to edit a todo </p>
+  <p> Undo : Ctrl-Z </p>
+  <p> Redo : Shift-Ctrl-Z </p>
+  <p> Developed by <a href="https://github.com/moisave/" about="_blank" rel="noreferrer noopener">moisave</a></p>
+  <p> Based on <a href="http://todomvc.com">TodoMVC</a></p>
+</footer>
+
+<p>
+  {{ historyIndex }}
+</p>
