@@ -27,15 +27,25 @@ Some basic and essential features added :
 - Clear all
 - Local storage
 - Wysiwyg edition mode (What You See Is What You Get)
-- Undo & Redo
 
 More advanced features :
 
+### Undo & Redo
+
+I've added two attributes to the todo.service : 
+- history : An array of Todolists. It stores all todolist states after each user actions. States are stored from the 
+more recent to the latest event. Index "0" stores the current state to avoid some undefined errors. Last index stores the latest
+todolist state.
+
+- historyIndex : A integer. It represents our location in history. It is initialisez at 0 and can't be greater than the history.length + 1.
+The more you "undo", the more historyIndex increases. The more you redo, the more it decrease. The more you make actions in the todolist, 
+the more history.length will be high. 
+
+I've seen some tools already implemented here : https://www.npmjs.com/package/ngrx-wieder  
+ 
+but I was struggled to implement it. So I decided to implement it myself.
+
 ### Progressive Web Application
-
-TODO
-
-### Firebase Authentication
 
 TODO
 
@@ -67,3 +77,6 @@ TODO
     - localStorage can't be loaded OnInit. We must call `load()` in the constructor.
 
 - Branch "undo-redo" : User can undo his last actions up to 10 times. He can redo it as well.
+    - Still a problem when we try to overwright the remaining redo stuff by our new input. I can't succeed to truncate the history properly. Maybe because of shady Angular mechanism.
+    If I could have some ***feedback*** here, it would be awesome. I have first implemented the logic in the todolist component, but I remembered that the logic is preferred as a service.
+ 

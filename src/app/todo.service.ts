@@ -6,6 +6,27 @@ import { TodoItemData } from './dataTypes/TodoItemData';
 @Injectable()
 export class TodoService {
 
+  // Getters
+  get history(): TodoListData[] {
+    return this._history;
+  }
+
+  get historyIndex(): number {
+    return this._historyIndex;
+  }
+
+  // Setters
+  set history(value: TodoListData[]) {
+    this._history = value;
+  }
+
+  set historyIndex(value: number) {
+    this._historyIndex = value;
+  }
+
+  private _history: TodoListData[];
+  private _historyIndex: number;
+
   private todoListSubject = new BehaviorSubject<TodoListData>({
     title: 'TODOList',
     items: []

@@ -20,9 +20,6 @@ export class TodoListComponent implements OnInit, AfterViewInit {
 
   public filter: string;
 
-  private history: TodoListData[];
-  public historyIndex: number;
-
   constructor(private todoService: TodoService) {
     // We retrieve our observable service and subscribe to it. Each time a change occurs, data is updated as well
     todoService.getTodoListDataObservable().subscribe(tdl => this.todoList = tdl);
@@ -30,12 +27,12 @@ export class TodoListComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.filter = 'all';
-    this.history = [];
-    this.historyIndex = 0;
+    this.todoService.history = [];
+    this.todoService.historyIndex = 0;
   }
 
   ngAfterViewInit() {
-    this.history.push(this.todoList);
+    this.todoService.history.push(this.todoList);
   }
 
   // Getters
@@ -114,11 +111,11 @@ export class TodoListComponent implements OnInit, AfterViewInit {
 
   // Push the list status inside the history accumulator
   saveToHistory(): void {
-    if (this.historyIndex === 0) {
-      this.history.unshift(this.todoList);
+    if (this.todoService.historyIndex === 0) {
+      this.todoService.history.unshift(this.todoList);
     } else {
-      this.historyIndex = 0;
-      this.history.unshift(this.todoList);
+      this.todoService.historyIndex = 0;
+      this.todoService.history.unshift(this.todoList);
     }
     this.todoService.save();
   }
@@ -126,9 +123,9 @@ export class TodoListComponent implements OnInit, AfterViewInit {
   sliceHistory(): void {
     console.log('todolist actual value');
     console.log(this.todoList);
-    this.history = this.history.slice(this.historyIndex);
+    this.todoService.history = this.todoService.history.slice(this.todoService.historyIndex);
     console.log('We sliced the history');
-    console.log(this.history);
+    console.log(this.todoService.history);
   }
 
   // Utils
@@ -150,11 +147,11 @@ export class TodoListComponent implements OnInit, AfterViewInit {
 
   // Retrieves the last todolist status from "history" attribute
   onCtrlZ() {
-    if (this.historyIndex + 1 < this.history.length) {
+    if (this.todoService.historyIndex + 1 < this.todoService.history.length) {
       console.log('Undo');
-      this.historyIndex += 1;
-      this.todoList = this.history[this.historyIndex];
-      console.log(this.history[this.historyIndex]);
+      this.todoService.historyIndex += 1;
+      this.todoList = this.todoService.history[this.todoService.historyIndex];
+      console.log(this.todoService.history[this.todoService.historyIndex]);
     } else {
       console.log('Nothing to Undo.');
     }
@@ -162,11 +159,11 @@ export class TodoListComponent implements OnInit, AfterViewInit {
 
   // Retrieves the last todolist status from "revertHistory" attribute
   onShiftCtrlZ() {
-    if (this.historyIndex > 0) {
+    if (this.todoService.historyIndex > 0) {
       console.log('Redo');
-      this.historyIndex -= 1;
-      this.todoList = this.history[this.historyIndex];
-      console.log(this.history);
+      this.todoService.historyIndex -= 1;
+      this.todoList = this.todoService.history[this.todoService.historyIndex];
+      console.log(this.todoService.history);
     } else {
       console.log('Nothing to Redo.');
     }
@@ -175,8 +172,8 @@ export class TodoListComponent implements OnInit, AfterViewInit {
   // Displays attributes "history" and "revertHistory" in the console
   onCtrlD() {
     console.log('Debug');
-    console.log(this.history);
-    console.log(this.history.length);
-    console.log(this.historyIndex);
+    console.log(this.todoService.history);
+    console.log(this.todoService.history.length);
+    console.log(this.todoService.historyIndex);
   }
 }
