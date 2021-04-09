@@ -30,7 +30,11 @@ export class TodoItemComponent implements OnInit {
   }
 
   set label(lab: string) {
-    this.todoService.setItemsLabel(lab, this.item);
+    if (lab.length !== 0) {
+      this.todoService.setItemsLabel(lab, this.item);
+    } else {
+      this.todoService.setItemsLabel(this.label, this.item);
+    }
   }
 
   get isDone(): boolean {
