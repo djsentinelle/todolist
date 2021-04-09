@@ -80,3 +80,6 @@ TODO
     - Still a problem when we try to overwright the remaining redo stuff by our new input. I can't succeed to truncate the history properly. Maybe because of shady Angular mechanism.
     If I could have some ***feedback*** here, it would be awesome. I have first implemented the logic in the todolist component, but I remembered that the logic is preferred as a service.
  
+ - Branch "bug-fix-user-should-not-edit-an-item-to-null" : When we edit the note and erase then label, the note should be not edited as blank. Now, when the user reproduce this behaviour,
+ modification is passed off. 
+ 
