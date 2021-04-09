@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 
-import { TodoItemData } from '../../../../TodoList/src/app/dataTypes/TodoItemData';
+import { TodoItemData} from '../dataTypes/TodoItemData';
 import { TodoService } from '../todo.service';
 
 

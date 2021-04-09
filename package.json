@@ -1,7 +1,10 @@
 {
-  "name": "PWA-TP3",
+  "name": "todolist",
   "version": "0.0.0",
   "license": "MIT",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
